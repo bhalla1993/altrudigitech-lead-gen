@@ -3,7 +3,15 @@ from fastapi.responses import StreamingResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from .db import SessionLocal, init_db
-from . import scraper, analyzer, models
+from . import scraper, models
+# analyzer depends on numpy which can fail to import on some dev machines
+# Import it lazily and fall back to None so the server can still start.
+analyzer = None
+try:
+    from . import analyzer as analyzer
+except Exception:
+    import logging as _logging
+    _logging.getLogger("app.main").warning("Failed to import analyzer (numpy may be missing). Analyzer endpoints will return an error until resolved.", exc_info=True)
 from .logging_config import get_logger
 import os
 from datetime import datetime, timedelta
