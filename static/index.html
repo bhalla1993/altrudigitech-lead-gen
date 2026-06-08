@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AltruDigiTech Lead Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <div style="display:flex;align-items:center;gap:12px">
+      <h1>AltruDigiTech</h1>
+      <p class="subtitle">Lead Dashboard — recent scanned websites & analysis</p>
+    </div>
+    <div class="small muted">Local dev dashboard</div>
+  </header>
+
+  <main>
+    <section id="controls">
+      <button id="refresh">Refresh</button>
+      <button id="delete-uncontacted" class="btn-danger">Delete Uncontacted</button>
+      <label>Show only uncontacted <input type="checkbox" id="filter-uncontacted" checked /></label>
+      <form id="scan-form" style="display:inline-block;margin-left:12px"> 
+        <input id="scan-url" type="url" placeholder="https://example.com" style="width:280px" required />
+        <input id="scan-name" type="text" placeholder="Business name (optional)" style="width:180px" />
+        <button id="scan-btn" type="submit">Scan</button>
+        <span id="scan-status" class="small muted" style="margin-left:8px"></span>
+      </form>
+    </section>
+
+    <section id="table-wrap">
+      <table id="leads-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Business</th>
+            <th>Website</th>
+            <th>Score</th>
+            <th>Explanation</th>
+            <th>Suggestion</th>
+            <th>Contacted</th>
+            <th>Actions</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="detail" style="display:none">
+      <h2>Details</h2>
+      <div id="detail-meta" class="muted"></div>
+      <div id="detail-audit" class="small muted" style="margin-top:8px"></div>
+      <div id="detail-categories" class="small muted" style="margin-top:8px"></div>
+      <div id="screenshots">
+        <div>
+          <h3>Desktop</h3>
+          <img id="img-desktop" src="" alt="desktop screenshot" />
+        </div>
+        <div>
+          <h3>Mobile</h3>
+          <img id="img-mobile" src="" alt="mobile screenshot" />
+        </div>
+      </div>
+        <div id="email-controls" style="margin-top:12px">
+          <button id="gen-email-btn" class="btn-audit">Generate Email</button>
+        </div>
+        <div id="email-preview" class="email-preview" style="display:none; margin-top:12px; white-space:pre-wrap;"></div>
+    </section>
+  </main>
+
+  <div id="email-modal" style="display:none">
+    <div class="modal-overlay"></div>
+    <div class="modal">
+      <button id="modal-close" class="btn-delete" style="float:right">Close</button>
+      <div id="modal-content" style="clear:both"></div>
+    </div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

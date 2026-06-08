@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+playwright
+sqlalchemy
+pydantic
+httpx
+python-dotenv
+aiofiles
+Pillow
+numpy
+openai
+tenacity
