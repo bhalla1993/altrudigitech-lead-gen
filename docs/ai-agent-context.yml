@@ -3,6 +3,8 @@ repo:
   name: altrudigitech-lead-gen
   description: "Lead-gen audit tool: scrape websites, analyze, and produce outreach suggestions."
   owner: "Your Name or Team"
+  license: MIT
+  spdx: "MIT"
 meta:
   generated_by: manual
   last_scanned: 2026-06-09

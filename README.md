@@ -111,5 +111,7 @@ Open an issue or submit a PR. For major changes, please open an issue first to d
 
 ## License
 
-This project has no license file in the repo. Add a `LICENSE` if you want to make it open source.
+This project is licensed under the MIT License — see the `LICENSE` file included in this repository.
+
+SPDX-License-Identifier: MIT
 
