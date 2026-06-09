@@ -1,0 +1,78 @@
+version: 1
+repo:
+  name: altrudigitech-lead-gen
+  description: "Lead-gen audit tool: scrape websites, analyze, and produce outreach suggestions."
+  owner: "Your Name or Team"
+meta:
+  generated_by: manual
+  last_scanned: 2026-06-09
+goals:
+  - "Low-cost, low-volume automated website analysis"
+  - "Deterministic local heuristics + caching to reduce external AI usage"
+  - "Store leads and outreach status; enable repeatable re-analysis"
+structure:
+  top_level_files:
+    - README.md
+    - requirements.txt
+    - Dockerfile
+  key_folders:
+    - app/: "application code (analyzer, scraper, DB, models, schemas)"
+    - data/: "audits, screenshots, runtime output"
+    - static/: "frontend (JS, CSS, HTML)"
+    - scripts/: "maintenance helpers"
+    - tests/: "unit and integration tests"
+entry_points:
+  python_package: app
+  main_module: app/main.py
+  test_command: "pytest -q"
+dependencies:
+  manifest: requirements.txt
+  install_hint: "python -m venv .venv && .venv/bin/pip install -r requirements.txt"
+runtime:
+  env_files:
+    - .env (local runtime overrides; do not commit secrets)
+important_files:
+  - app/main.py
+  - app/analyzer.py
+  - app/scraper.py
+  - app/db.py
+  - app/models.py
+  - app/schemas.py
+  - static/style.css
+frontend:
+  css:
+    - path: static/style.css
+      purpose: "Main UI styles (table, badges, modal, layout)"
+      variables:
+        - --bg
+        - --muted
+        - --accent
+        - --card
+        - --border
+        - --good
+        - --okay
+        - --bad
+      key_selectors:
+        - body
+        - #leads-table
+        - .score-badge
+        - #detail
+        - #screenshots
+        - #email-modal
+notes_for_agents:
+  - "Start by reading README.md, then this file (ai-agent-context.yml)."
+  - "When making runtime changes, inspect `data/` and `scripts/` for re-run helpers."
+  - "Do not include secrets; list env var names only."
+maintenance:
+  update_process:
+    - "Regenerate this file after structural changes (add/remove top-level folders or key files)."
+    - "Add short changelog entry in docs/CONTEXT_CHANGELOG.md when updating."
+    - "Regenerate using the generator script (see `regenerate` below)."
+  regenerate:
+    description: "Commands to regenerate the ai-agent-context.yml from the repo"
+    commands:
+      - "chmod +x scripts/generate_agent_context.py"
+      - "python3 scripts/generate_agent_context.py > docs/ai-agent-context.yml"
+  ci_check: "Optionally add a CI step to ensure this file is up-to-date."
+contact:
+  maintainer: "shiva.bhalla@gmail.com"
