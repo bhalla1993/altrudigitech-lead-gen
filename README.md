@@ -1,4 +1,7 @@
+
 # AltruDigiTech Lead‑Gen Engine — FastAPI microservice
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A small backend service to scan business websites, analyze them with AI, score their design/usability, and store leads for outreach.
 
