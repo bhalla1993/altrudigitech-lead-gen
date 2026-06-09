@@ -1,11 +1,8 @@
----
 # AltruDigiTech Lead‑Gen Engine — FastAPI microservice
 
 A small backend service to scan business websites, analyze them with AI, score their design/usability, and store leads for outreach.
 
 This repository contains the core MVP service used by the AltruDigiTech lead pipeline: scraper, analyzer, database, and API.
-
----
 
 ## Quick start
 
